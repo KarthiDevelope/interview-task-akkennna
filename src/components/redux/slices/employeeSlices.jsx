@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {data} from "../../../components/data"
 
 export const employeeSlice = createSlice({
     name: 'employee',
@@ -25,7 +24,7 @@ export const employeeSlice = createSlice({
         ,
         employeeDelete: (state, action) => {
             const { id } = action.payload;
-            const existingEmployeeIndex = state.employees.findIndex(employee => employee.id === id);
+            const existingEmployeeIndex = state.employees.filter(employee => employee.id === id);
             if (existingEmployeeIndex !== -1) {
                 state.employees.splice(existingEmployeeIndex, 1);
             }
