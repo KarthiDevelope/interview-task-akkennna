@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Button, Input, Form, Select } from "antd";
 import { employeeAdd } from './redux/slices/employeeSlices';
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import styled from 'styled-components';
 
 
 const { Option } = Select;
@@ -40,49 +41,62 @@ const Create = () => {
     };
 
     return (
-        <div className="container">
-            <div className="row">
-                <h1>Add Employee</h1>
-            </div>
-            <div className='FormSection_main'>
-                <Form
-                    layout='vertical'
-                    onFinish={handleFinish}
+        <FormAlign>
 
-                >
-                    <Form.Item label="Name">
-                        <Input value={name} onChange={handleName} />
-                    </Form.Item>
-                    <Form.Item label="Age">
-                        <Input type="number" value={age} onChange={handleAge} />
-                    </Form.Item>
-                    <Form.Item label="Role">
-                        <Select value={role} onChange={handleRole}>
-                            <Option value="manager">Manager</Option>
-                            <Option value="employee">Employee</Option>
-                            <Option value="supervisor">Supervisor</Option>
-                        </Select>
-                    </Form.Item>
-                    <Form.Item label="Sex">
-                        <Select value={sex} onChange={handleSex}>
-                            <Option value="male">Male</Option>
-                            <Option value="female">Female</Option>
-                            <Option value="other">Other</Option>
-                        </Select>
-                    </Form.Item>
-                    <Form.Item label="Email">
-                        <Input type="email" value={email} onChange={handleEmail} />
-                    </Form.Item>
-                    <Form.Item label="Phone">
-                        <Input type="tel" value={phone} onChange={handlePhone} />
-                    </Form.Item>
-                    <Form.Item>
-                        <Button type="primary" htmlType="submit">Save</Button>
-                    </Form.Item>
-                </Form>
+
+            <div className="container">
+                <div className="row">
+                    <h1>Add Employee</h1>
+                </div>
+                <div className='FormSection_main'>
+                    <Form
+                        layout='vertical'
+                        onFinish={handleFinish}
+                        className='forms'
+
+                    >
+                        <Form.Item label="Name">
+                            <Input value={name} onChange={handleName} />
+                        </Form.Item>
+                        <Form.Item label="Age">
+                            <Input type="number" value={age} onChange={handleAge} />
+                        </Form.Item>
+                        <Form.Item label="Role">
+                            <Select value={role} onChange={handleRole}>
+                                <Option value="manager">Manager</Option>
+                                <Option value="employee">Employee</Option>
+                                <Option value="supervisor">Supervisor</Option>
+                            </Select>
+                        </Form.Item>
+                        <Form.Item label="Sex">
+                            <Select value={sex} onChange={handleSex}>
+                                <Option value="male">Male</Option>
+                                <Option value="female">Female</Option>
+                                <Option value="other">Other</Option>
+                            </Select>
+                        </Form.Item>
+                        <Form.Item label="Email">
+                            <Input type="email" value={email} onChange={handleEmail} />
+                        </Form.Item>
+                        <Form.Item label="Phone">
+                            <Input type="tel" value={phone} onChange={handlePhone} />
+                        </Form.Item>
+                        <Form.Item>
+                            <Button type="primary" htmlType="submit">Save</Button>
+                        </Form.Item>
+                    </Form>
+                </div>
             </div>
-        </div>
+        </FormAlign>
     )
 }
 
 export default Create;
+
+const FormAlign = styled.div`
+.FormSection_main .forms {
+    width: 800px;
+    padding: 0 20px;
+}
+
+`
